@@ -1,0 +1,26 @@
+plugins {
+    id 'groovy'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation(group: 'au.com.dius.pact.provider', name: 'junit5', version: '4.4.0-beta.0') {
+        exclude group: 'org.codehaus.groovy', module: 'groovy'
+    }
+    implementation group: 'org.ngrinder', name: 'ngrinder-groovy', version: '3.5.5'
+    implementation group: 'org.mongodb', name: 'mongodb-driver-sync', version: '4.5.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}
